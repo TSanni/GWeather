@@ -7,18 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83008D3A28C84AD8006708B2 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83008D3928C84AD8006708B2 /* K.swift */; };
+		83008D3F28C8D998006708B2 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83008D3E28C8D998006708B2 /* WeatherData.swift */; };
 		83B8B5ED28BD00850050C441 /* GWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B5EC28BD00850050C441 /* GWeatherApp.swift */; };
 		83B8B5EF28BD00850050C441 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B5EE28BD00850050C441 /* ContentView.swift */; };
 		83B8B5F128BD00880050C441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B8B5F028BD00880050C441 /* Assets.xcassets */; };
 		83B8B5F428BD00880050C441 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B8B5F328BD00880050C441 /* Preview Assets.xcassets */; };
+		83B8B5FB28BD08EB0050C441 /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B5FA28BD08EB0050C441 /* PlacesView.swift */; };
+		83B8B5FD28BD0DC60050C441 /* SavedLocationsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B5FC28BD0DC60050C441 /* SavedLocationsViews.swift */; };
+		83B8B5FF28BD12F90050C441 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B5FE28BD12F90050C441 /* WeatherViewModel.swift */; };
+		83B8B60328BD161C0050C441 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B60228BD161C0050C441 /* SearchBarView.swift */; };
+		83B8B60728BD34CB0050C441 /* MyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B60628BD34CB0050C441 /* MyButtonStyle.swift */; };
+		83B8B60928BD44120050C441 /* TimeRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B60828BD44120050C441 /* TimeRangeView.swift */; };
+		83B8B60B28BD48530050C441 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B60A28BD48530050C441 /* TodayView.swift */; };
+		83B8B60D28BD68970050C441 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B60C28BD68970050C441 /* SwiftUIView.swift */; };
+		83B8B61128BF082D0050C441 /* WeatherTabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B61028BF082D0050C441 /* WeatherTabViews.swift */; };
+		83B8B61328BFCA370050C441 /* TodayDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B61228BFCA370050C441 /* TodayDetailsView.swift */; };
+		83B8B61628BFEFB10050C441 /* HourlyTempsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B61528BFEFB10050C441 /* HourlyTempsView.swift */; };
+		83B8B61828C12CBC0050C441 /* TomorrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B61728C12CBC0050C441 /* TomorrowView.swift */; };
+		83B8B61A28C12CD50050C441 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B61928C12CD50050C441 /* DailyView.swift */; };
+		83B8B61E28C24ACD0050C441 /* DailyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B61D28C24ACD0050C441 /* DailyViewCell.swift */; };
+		83B8B62228C3FB200050C441 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8B62128C3FB200050C441 /* TestView.swift */; };
+		83C2BD0C28CF90300069F795 /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C2BD0B28CF90300069F795 /* PullToRefresh.swift */; };
+		83DCCC3F28D2C6900072EF96 /* WeatherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC3E28D2C6900072EF96 /* WeatherModels.swift */; };
+		83DCCC4128D2C9410072EF96 /* WeatherFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC4028D2C9410072EF96 /* WeatherFunctions.swift */; };
+		83DCCC4328D3CE040072EF96 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC4228D3CE040072EF96 /* SettingsScreen.swift */; };
+		83DCCC4528D4B33E0072EF96 /* SendMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC4428D4B33E0072EF96 /* SendMailView.swift */; };
+		83DCCC4828D63ECF0072EF96 /* SwiftUIMailView in Frameworks */ = {isa = PBXBuildFile; productRef = 83DCCC4728D63ECF0072EF96 /* SwiftUIMailView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83008D3828C84AB9006708B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		83008D3928C84AD8006708B2 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		83008D3E28C8D998006708B2 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		83B8B5E928BD00850050C441 /* GWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B8B5EC28BD00850050C441 /* GWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GWeatherApp.swift; sourceTree = "<group>"; };
 		83B8B5EE28BD00850050C441 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		83B8B5F028BD00880050C441 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83B8B5F328BD00880050C441 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		83B8B5FA28BD08EB0050C441 /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
+		83B8B5FC28BD0DC60050C441 /* SavedLocationsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsViews.swift; sourceTree = "<group>"; };
+		83B8B5FE28BD12F90050C441 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		83B8B60228BD161C0050C441 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		83B8B60628BD34CB0050C441 /* MyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButtonStyle.swift; sourceTree = "<group>"; };
+		83B8B60828BD44120050C441 /* TimeRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangeView.swift; sourceTree = "<group>"; };
+		83B8B60A28BD48530050C441 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		83B8B60C28BD68970050C441 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		83B8B61028BF082D0050C441 /* WeatherTabViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabViews.swift; sourceTree = "<group>"; };
+		83B8B61228BFCA370050C441 /* TodayDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsView.swift; sourceTree = "<group>"; };
+		83B8B61528BFEFB10050C441 /* HourlyTempsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTempsView.swift; sourceTree = "<group>"; };
+		83B8B61728C12CBC0050C441 /* TomorrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomorrowView.swift; sourceTree = "<group>"; };
+		83B8B61928C12CD50050C441 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
+		83B8B61D28C24ACD0050C441 /* DailyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewCell.swift; sourceTree = "<group>"; };
+		83B8B62128C3FB200050C441 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		83C2BD0B28CF90300069F795 /* PullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
+		83DCCC3E28D2C6900072EF96 /* WeatherModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModels.swift; sourceTree = "<group>"; };
+		83DCCC4028D2C9410072EF96 /* WeatherFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFunctions.swift; sourceTree = "<group>"; };
+		83DCCC4228D3CE040072EF96 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		83DCCC4428D4B33E0072EF96 /* SendMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +72,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83DCCC4828D63ECF0072EF96 /* SwiftUIMailView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83008D3D28C85095006708B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				83008D3E28C8D998006708B2 /* WeatherData.swift */,
+				83DCCC3E28D2C6900072EF96 /* WeatherModels.swift */,
+				83DCCC4028D2C9410072EF96 /* WeatherFunctions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		83B8B5E028BD00850050C441 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +108,12 @@
 		83B8B5EB28BD00850050C441 /* GWeather */ = {
 			isa = PBXGroup;
 			children = (
+				83008D3828C84AB9006708B2 /* Info.plist */,
 				83B8B5EC28BD00850050C441 /* GWeatherApp.swift */,
-				83B8B5EE28BD00850050C441 /* ContentView.swift */,
+				83008D3D28C85095006708B2 /* Model */,
+				83B8B60128BD145F0050C441 /* Views */,
+				83B8B60028BD14560050C441 /* ViewModels */,
+				83B8B61B28C180F20050C441 /* Test */,
 				83B8B5F028BD00880050C441 /* Assets.xcassets */,
 				83B8B5F228BD00880050C441 /* Preview Content */,
 			);
@@ -65,6 +126,79 @@
 				83B8B5F328BD00880050C441 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		83B8B60028BD14560050C441 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				83B8B5FE28BD12F90050C441 /* WeatherViewModel.swift */,
+				83008D3928C84AD8006708B2 /* K.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		83B8B60128BD145F0050C441 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83B8B5EE28BD00850050C441 /* ContentView.swift */,
+				83B8B61028BF082D0050C441 /* WeatherTabViews.swift */,
+				83B8B60228BD161C0050C441 /* SearchBarView.swift */,
+				83B8B60828BD44120050C441 /* TimeRangeView.swift */,
+				83DCCC4228D3CE040072EF96 /* SettingsScreen.swift */,
+				83DCCC4428D4B33E0072EF96 /* SendMailView.swift */,
+				83B8B61428BFEF9D0050C441 /* Today */,
+				83B8B62028C24FA00050C441 /* Tomorrow */,
+				83B8B61C28C247720050C441 /* Daily */,
+				83B8B61F28C24F8A0050C441 /* Places */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83B8B61428BFEF9D0050C441 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				83B8B60A28BD48530050C441 /* TodayView.swift */,
+				83B8B61228BFCA370050C441 /* TodayDetailsView.swift */,
+				83B8B61528BFEFB10050C441 /* HourlyTempsView.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		83B8B61B28C180F20050C441 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				83C2BD0B28CF90300069F795 /* PullToRefresh.swift */,
+				83B8B60628BD34CB0050C441 /* MyButtonStyle.swift */,
+				83B8B60C28BD68970050C441 /* SwiftUIView.swift */,
+				83B8B62128C3FB200050C441 /* TestView.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		83B8B61C28C247720050C441 /* Daily */ = {
+			isa = PBXGroup;
+			children = (
+				83B8B61928C12CD50050C441 /* DailyView.swift */,
+				83B8B61D28C24ACD0050C441 /* DailyViewCell.swift */,
+			);
+			path = Daily;
+			sourceTree = "<group>";
+		};
+		83B8B61F28C24F8A0050C441 /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				83B8B5FA28BD08EB0050C441 /* PlacesView.swift */,
+				83B8B5FC28BD0DC60050C441 /* SavedLocationsViews.swift */,
+			);
+			path = Places;
+			sourceTree = "<group>";
+		};
+		83B8B62028C24FA00050C441 /* Tomorrow */ = {
+			isa = PBXGroup;
+			children = (
+				83B8B61728C12CBC0050C441 /* TomorrowView.swift */,
+			);
+			path = Tomorrow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +217,9 @@
 			dependencies = (
 			);
 			name = GWeather;
+			packageProductDependencies = (
+				83DCCC4728D63ECF0072EF96 /* SwiftUIMailView */,
+			);
 			productName = GWeather;
 			productReference = 83B8B5E928BD00850050C441 /* GWeather.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +248,9 @@
 				Base,
 			);
 			mainGroup = 83B8B5E028BD00850050C441;
+			packageReferences = (
+				83DCCC4628D63ECE0072EF96 /* XCRemoteSwiftPackageReference "swiftui-mail-view" */,
+			);
 			productRefGroup = 83B8B5EA28BD00850050C441 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,7 +277,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B8B5FF28BD12F90050C441 /* WeatherViewModel.swift in Sources */,
+				83DCCC3F28D2C6900072EF96 /* WeatherModels.swift in Sources */,
+				83B8B60728BD34CB0050C441 /* MyButtonStyle.swift in Sources */,
+				83B8B61128BF082D0050C441 /* WeatherTabViews.swift in Sources */,
+				83B8B61A28C12CD50050C441 /* DailyView.swift in Sources */,
+				83DCCC4528D4B33E0072EF96 /* SendMailView.swift in Sources */,
+				83DCCC4328D3CE040072EF96 /* SettingsScreen.swift in Sources */,
+				83B8B5FB28BD08EB0050C441 /* PlacesView.swift in Sources */,
+				83B8B5FD28BD0DC60050C441 /* SavedLocationsViews.swift in Sources */,
+				83008D3F28C8D998006708B2 /* WeatherData.swift in Sources */,
+				83B8B61828C12CBC0050C441 /* TomorrowView.swift in Sources */,
+				83B8B60D28BD68970050C441 /* SwiftUIView.swift in Sources */,
+				83B8B62228C3FB200050C441 /* TestView.swift in Sources */,
+				83008D3A28C84AD8006708B2 /* K.swift in Sources */,
+				83B8B60B28BD48530050C441 /* TodayView.swift in Sources */,
+				83B8B61328BFCA370050C441 /* TodayDetailsView.swift in Sources */,
+				83C2BD0C28CF90300069F795 /* PullToRefresh.swift in Sources */,
 				83B8B5EF28BD00850050C441 /* ContentView.swift in Sources */,
+				83DCCC4128D2C9410072EF96 /* WeatherFunctions.swift in Sources */,
+				83B8B60928BD44120050C441 /* TimeRangeView.swift in Sources */,
+				83B8B61E28C24ACD0050C441 /* DailyViewCell.swift in Sources */,
+				83B8B61628BFEFB10050C441 /* HourlyTempsView.swift in Sources */,
+				83B8B60328BD161C0050C441 /* SearchBarView.swift in Sources */,
 				83B8B5ED28BD00850050C441 /* GWeatherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +432,8 @@
 				DEVELOPMENT_TEAM = QNXV57SQKM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GWeather/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide relevant weather data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +463,8 @@
 				DEVELOPMENT_TEAM = QNXV57SQKM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GWeather/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide relevant weather data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +505,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		83DCCC4628D63ECE0072EF96 /* XCRemoteSwiftPackageReference "swiftui-mail-view" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-mail-view.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		83DCCC4728D63ECF0072EF96 /* SwiftUIMailView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83DCCC4628D63ECE0072EF96 /* XCRemoteSwiftPackageReference "swiftui-mail-view" */;
+			productName = SwiftUIMailView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83B8B5E128BD00850050C441 /* Project object */;
 }
