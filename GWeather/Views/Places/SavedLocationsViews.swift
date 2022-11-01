@@ -8,26 +8,42 @@
 import SwiftUI
 
 struct SavedLocationsViews: View {
+    var place: Place
+    
     var body: some View {
-        VStack {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Austin, Tx")
-                    Text("August, 29, 10:05 AM")
-                }
-                Spacer()
-                
-                HStack {
-                    Text("81℉")
-                    Image(systemName: "cloud.fill")
-                }
-            }
+        
+        HStack {
+//            Image(systemName: "circle.fill")
+            Text("•")
+                .foregroundColor(.black)
+            Spacer()
+            Text(place.wrappedName)
+                .foregroundColor(.black)
+            Spacer()
+            Text("•")
+                .foregroundColor(.black)
         }
+        
+        
+//        VStack {
+//            HStack {
+//                VStack(alignment: .leading) {
+//                    Text(place.wrappedName)
+//                    Text(place.wrappedDate)
+//                }
+//                Spacer()
+//
+//                HStack {
+//                    Text(place.wrappedTemp)
+//                    Image(systemName: place.wrappedIcon)
+//                }
+//            }
+//        }
     }
 }
 
-struct SavedLocationsViews_Previews: PreviewProvider {
-    static var previews: some View {
-        SavedLocationsViews()
-    }
-}
+//struct SavedLocationsViews_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SavedLocationsViews()
+//    }
+//}

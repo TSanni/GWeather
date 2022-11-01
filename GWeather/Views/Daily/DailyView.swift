@@ -19,9 +19,16 @@ struct DailyView: View {
                 Divider()
                 
                 ForEach(1..<weather.dailyWeather.count, id: \.self) { day in
-                    DailyViewCell(daily: weather.dailyWeather[day], dateIsToday: false).padding()
+                    DailyViewCell(daily: weather.dailyWeather[day], dateIsToday: false)
+                        .padding()
                     Divider()
                 }
+                
+                Spacer()
+                
+                SendMailView()
+                    .foregroundColor(.gray)
+                    .padding()
             }
         }
         .background(.white)

@@ -9,10 +9,23 @@ import SwiftUI
 
 struct PlacesView: View {
     @State private var searchText = ""
-//    @EnvironmentObject var viewModel: WeatherViewModel
     @State var degreeRotation: Double = 0
     @Binding var changeToPlacesView: Bool
     @EnvironmentObject var weather: WeatherViewModel
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.timeAdded, order: .reverse)], animation: .easeInOut) var places: FetchedResults<Place>
+    
+    
+//    init(changeToPlacesView: Binding<Bool>) {
+//        _changeToPlacesView = changeToPlacesView
+//        
+//        UITableView.appearance().backgroundColor = .red
+//        UITableViewCell.appearance().backgroundColor = .red
+//        UITableView.appearance().tableFooterView = UIView()
+//    }
+    
+
+    
     
     var body: some View {
         VStack {
@@ -21,34 +34,102 @@ struct PlacesView: View {
                 textFieldSearch
             }.padding(.top)
             
-            Divider().padding()
+            Divider()
+                .padding()
             
-            currentLocationInfo
-                .padding(.bottom)
+            
+            Menu {
+                Button("Save location") {
+                    addLocation()
+                }
+            } label: {
+                currentLocationInfo
+
+            }
+            .disabled(weather.userLocation == "Earth" ? true : false)
+
+            
+//
+//            currentLocationInfo
+//                .contextMenu {
+//                    Button("Save location") {
+//                        addLocation()
+//                    }
+//                }
+            .padding(.bottom)
             
             HStack {
                 Text("Saved locations")
+                    .foregroundColor(.black)
                 Spacer()
-                Button("MANAGE") {
-                    
-                }
-                .foregroundColor(.black)
+                EditButton()
+                    .foregroundColor(.black)
             }
             
             Divider()
             
-            ForEach(0..<2, id: \.self) { view in
-                SavedLocationsViews().padding(.vertical)
-                Divider()
+            List {
+                if places.count == 0 {
+                    Text("")
+                        .listRowBackground(Color.clear)
+                }
+                ForEach(places) { place in
+                    Button {
+                        getNewWeather(place: place)
+                    } label: {
+                        SavedLocationsViews(place: place)
+                            .padding(.vertical)
+                    }
+
+                    .listRowBackground(K.Colors.offWhite)
+                }
+                .onDelete(perform: deletePlace(at:))
             }
-            Spacer()
+            .scrollContentBackground(.hidden)
         }
         .padding(.horizontal)
+        .background(.white)
+        
+    }
+    
+    func getNewWeather(place: Place) {
+        print(place.wrappedName)
+        weather.getWeatherWithCoordinates(latitude: place.wrappedLatitude, longitude: place.wrappedLongitude)
+        DispatchQueue.main.async {
+            weather.userLocation = place.wrappedName
+
+        }
+        withAnimation {
+            changeToPlacesView = false
+        }
     }
     
     
+    func addLocation() {
+        let addedCity = Place(context: moc)
+        //dont need all this for core data
+        //need to only store coordinates in core data
+        addedCity.timeAdded = Date.now
+        addedCity.name = weather.userLocation
+        addedCity.date = weather.currentWeather.currentTime
+        addedCity.date = weather.dateForCoreData
+        addedCity.longitude = weather.lonForCoreData
+        addedCity.latitude = weather.latForCoreData
+        
+        try? moc.save()
+        print("The coordinates saved to core data: Lat: \(addedCity.wrappedLatitude) Lon: \(addedCity.wrappedLongitude)")
+    }
     
     
+    func deletePlace(at offsets: IndexSet) {
+        for offset in offsets {
+            let place = places[offset]
+            moc.delete(place)
+            
+        }
+        try? moc.save()
+        
+    }
     
     
     
@@ -58,7 +139,6 @@ struct PlacesView: View {
                 degreeRotation -= 360
 //                viewModel.changeToPlacesView = false
                 changeToPlacesView = false
-                
             }
         } label: {
             Image(systemName: "arrow.left")
@@ -69,29 +149,67 @@ struct PlacesView: View {
     }
     
     var currentLocationInfo: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                Text(weather.userLocation)
+        
+        Button {
+            
+        } label: {
+            HStack {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(weather.userLocation)
+                        .foregroundColor(.black)
+                    HStack {
+                        Image(systemName: "location.fill")
+                            .foregroundColor(.blue)
+                        Text("Chosen Location")
+                            .foregroundColor(.black)
+                    }
+                }
+                Spacer()
                 HStack {
-                    Image(systemName: "location.fill")
-                        .foregroundColor(.blue)
-                    Text("Your location")
+                    Text(weather.currentWeather.currentTemp + weather.unitLogo)
+                        .foregroundColor(.black)
+                    Image(systemName: weather.currentWeather.icon)
+                        .foregroundStyle(weather.currentWeather.iconColor[0],
+                                         weather.currentWeather.iconColor[1],
+                                         weather.currentWeather.iconColor[2]
+                        )
                 }
             }
-            Spacer()
-            HStack {
-                Text(weather.currentWeather.currentTemp + "℉")
-                Image(systemName: weather.currentWeather.icon)
-                    .foregroundStyle(weather.currentWeather.iconColor[0],
-                                     weather.currentWeather.iconColor[1],
-                                     weather.currentWeather.iconColor[2]
-                    )
-            }
         }
+
+
+
     }
     
     var textFieldSearch: some View {
-        TextField("Search Places", text: $searchText)
+        HStack {
+            TextField("", text: $searchText)
+                .placeholder(when: searchText.isEmpty) {
+                    Text("Search places").foregroundColor(.gray)
+                }
+                .foregroundColor(.black)
+                .onSubmit {
+                    //Fix to accept strings with spaces
+                    let newText = searchText.replacingOccurrences(of: " ", with: "+")
+                    weather.performGeocodeRequest(with: newText)
+                    withAnimation {
+                        changeToPlacesView = false
+                    }
+                }
+            
+            Button {
+                weather.manager.startUpdatingLocation()
+                withAnimation {
+                    changeToPlacesView = false
+                }
+            } label: {
+                Image(systemName: "location.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+            }
+
+        }
 
     }
     
@@ -103,3 +221,8 @@ struct PlacesView_Previews: PreviewProvider {
         PlacesView(changeToPlacesView: .constant(false)).environmentObject(WeatherViewModel.shared)
     }
 }
+
+
+
+
+

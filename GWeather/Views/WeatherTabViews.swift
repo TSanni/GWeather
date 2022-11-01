@@ -9,21 +9,24 @@ import SwiftUI
 
 struct WeatherTabViews: View {
     @State private var selectedTab: TimeRange = .today//this changes when tabview page changes
+    @EnvironmentObject var weather: WeatherViewModel
     
     var body: some View {
         VStack(spacing: 0) {
             
             TimeRangeView(selectedTab: $selectedTab)
                 .padding(.horizontal)
-                .background(Color(red: 56/255, green: 103/255, blue: 214/255, opacity: 1.0))
+                .background(weather.searchBarColor)
+                
+            Divider()
 
             
             TabView(selection: $selectedTab) {
-                TodayView().tabItem {
+                TodayView(currentWeather: weather.currentWeather, dailyWeather: weather.dailyWeather[0]).tabItem {
                     Label("Today", systemImage: "house")
                 }.tag(TimeRange.today)
                 
-                TomorrowView().tabItem {
+                TomorrowView(tomorrow: weather.tomorrowWeather).tabItem {
                     Label("Tomorrow", systemImage: "house")
                 }.tag(TimeRange.tomorrow)
                 

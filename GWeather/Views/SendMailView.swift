@@ -22,7 +22,7 @@ struct SendMailView: View {
              showMailView.toggle()
          }) {
              Text("Contact Support")
-                 .foregroundColor(Color(hue: 0.456, saturation: 0.97, brightness: 0.79))
+//                 .foregroundColor(Color(hue: 0.456, saturation: 0.97, brightness: 0.79))
 
          }
          .disabled(!MailView.canSendMail)

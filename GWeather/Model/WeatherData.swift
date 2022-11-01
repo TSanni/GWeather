@@ -50,12 +50,20 @@ struct Daily: Codable {// data for the daily weather
     let weather: [Weather]
     let pop: Double
     let uvi: Double
+    let feels_like: FeelsLike
 }
 
 struct Temp: Codable { // for Daily struct
     let day: Double
     let min: Double
     let max: Double
+    let night: Double
+    let eve: Double
+    let morn: Double
+}
+
+struct FeelsLike: Codable {
+    let day: Double
     let night: Double
     let eve: Double
     let morn: Double

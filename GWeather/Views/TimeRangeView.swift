@@ -10,7 +10,7 @@ import SwiftUI
 enum TimeRange: String, CaseIterable {
     case today = "Today"
     case tomorrow = "Tomorrow"
-    case tenDays = "10 Days"
+    case tenDays = "8 Days"
 }
 
 
@@ -20,6 +20,8 @@ struct TimeRangeView: View {
     @State private var selectedRange: TimeRange = .today
     @Binding var selectedTab: TimeRange // to get underline when swiping screen
     @Namespace private var animation
+    @EnvironmentObject var weather: WeatherViewModel
+    @State var changeSearchBarColor: Color = .brown
     
     var body: some View {
         HStack {
@@ -29,6 +31,14 @@ struct TimeRangeView: View {
                     withAnimation {
 //                        selectedRange = range
                         selectedTab = range
+//                        switch selectedTab {
+//                        case .today:
+//                            weather.searchBarColor = .red
+//                        case .tomorrow:
+//                            weather.searchBarColor = .yellow
+//                        case .tenDays:
+//                            weather.searchBarColor = .green
+//                        }
                     }
                 } label: {
                     VStack {

@@ -19,6 +19,45 @@ struct WeatherFunction {
         return dateFormatter.string(from: date)
     }
     
+    func getAppropriateSearchBarColor(currentSunriseTime: Double, currentSunsetTime: Double, currentTime: Double) -> Color {
+        if currentTime < currentSunsetTime && currentTime > currentSunriseTime  {
+            return K.SearchBarColors.blueColor
+        } else {
+            return K.SearchBarColors.purpleColor
+        }
+    }
+    
+    //add sunrise time to parameter
+    func getAppropriateBackgroundColor(currentSunriseTime: Double, currentSunsetTime: Double, currentTime: Double) -> LinearGradient {
+        if currentTime < currentSunsetTime && currentTime > currentSunriseTime  {
+            return K.Gradients.blueGradient
+        } else {
+            return K.Gradients.purpleGradient
+        }
+    }
+//    
+//    func getSearchBarBackgroundColor(gradientColor: LinearGradient) -> Color {
+//        if gradientColor == K.Gradients.blueGradient {
+//            return Color.teal
+//        } else {
+//            return Color.purple
+//        }
+//    }
+    
+//    func getAppropriateWeatherImage(weatherIcon: String) -> LinearGradient {
+//
+//
+//
+//
+////        switch weatherIcon {
+////        case K.WeatherCondition.sunMaxFill:
+////            return K.Gradients.yellowGradient
+////
+////        default:
+////            return LinearGradient(colors: [.black, .black], startPoint: .top, endPoint: .bottom)
+////        }
+//    }
+    
     
     //Returns the daily date
     func getDailyDate(dateInDoubleFormat: [Double], timezoneOffset: Int) -> [String] {
@@ -147,33 +186,33 @@ struct WeatherFunction {
     }
     
     func getSFColorForIcon(sfIcon: String) -> [Color] {
-        let offWhite = Color(hue: 0.104, saturation: 0.0, brightness: 0.897)
-        let moonColor = Color(hue: 0.556, saturation: 0.128, brightness: 0.864)
+//        let offWhite = Color(hue: 0.104, saturation: 0.0, brightness: 0.897)
+//        let moonColor = Color(hue: 0.556, saturation: 0.128, brightness: 0.864)
         
         
         switch sfIcon {
         case K.WeatherCondition.sunMaxFill:
             return [.yellow, .yellow, .yellow]
         case K.WeatherCondition.moonStarsFill:
-            return [moonColor, offWhite, .clear]
+            return [K.Colors.moonColor, K.Colors.offWhite, .clear]
         case K.WeatherCondition.cloudSunFill:
-            return [offWhite, .yellow, .clear]
+            return [K.Colors.offWhite, .yellow, .clear]
         case K.WeatherCondition.cloudMoonFill:
-            return [offWhite, moonColor, .clear]
+            return [K.Colors.offWhite, K.Colors.moonColor, .clear]
         case K.WeatherCondition.cloudFill:
-            return [offWhite, offWhite, offWhite]
+            return [K.Colors.offWhite, K.Colors.offWhite, K.Colors.offWhite]
         case K.WeatherCondition.cloudRainFill:
-            return [offWhite, .cyan, .clear]
+            return [K.Colors.offWhite, .cyan, .clear]
         case K.WeatherCondition.cloudSunRainFill:
-            return [offWhite, .yellow, .cyan]
+            return [K.Colors.offWhite, .yellow, .cyan]
         case K.WeatherCondition.cloudMoonRainFill:
-            return [offWhite, moonColor, .cyan]
+            return [K.Colors.offWhite, K.Colors.moonColor, .cyan]
         case K.WeatherCondition.cloudBoltFill:
-            return [offWhite, .yellow, .clear]
+            return [K.Colors.offWhite, .yellow, .clear]
         case K.WeatherCondition.snowflake:
-            return [offWhite, .clear, .clear]
+            return [K.Colors.offWhite, .clear, .clear]
         case K.WeatherCondition.cloudFogFill:
-            return [offWhite, .gray, .clear]
+            return [K.Colors.offWhite, .gray, .clear]
             
         default:
             print("Error getting color")

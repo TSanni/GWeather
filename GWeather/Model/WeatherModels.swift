@@ -43,12 +43,14 @@ struct TomorrowWeatherModel {
     let chanceOfPrecipitation: String
 }
 
-struct HourlyWeatherModel {
+struct HourlyWeatherModel: Identifiable {
     let temp: String
     let time: String
     let pop: String
     let icon: String
     let iconColor: [Color]
+    
+    var id = UUID()
     
     static let shared = HourlyWeatherModel(temp: "-", time: "-", pop: "-", icon: "sun.min", iconColor: [.clear, .clear, .clear])
 }
@@ -57,16 +59,26 @@ struct HourlyWeatherModel {
 struct DailyWeatherModel: Identifiable {
     var id = UUID()
     
+    static let shared = DailyWeatherModel(dates: "-", sunrise: "-", sunset: "-", morningTemp: "-", daytimeTemp: "-", eveningTemp: "-", nighttimeTemp: "-", minimumTemp: "-", maximumTemp: "-", morningFeelsLike: "-", daytimeFeelsLike: "-", eveningFeelsLike: "-", nightimeFeelsLike: "-", humidity: "-", windspeed: "-", windDegrees: "-", description: "-", chanceOfPrecipitation: "-", uvIndex: "-", icons: "sun.min", iconColors: [.clear, .clear, .clear])
     
-    static let shared = DailyWeatherModel(dates: "-", sunrise: "-", sunset: "-", daytimeTemp: "-", nighttimeTemp: "-", minimumTemp: "-", maximumTemp: "-", humidity: "-", windspeed: "-", windDegrees: "-", description: "-", chanceOfPrecipitation: "-", uvIndex: "-", icons: "sun.min", iconColors: [.clear, .clear, .clear])
+    
     
     let dates: String //all dates
     let sunrise: String
     let sunset: String
+    
+    let morningTemp: String
     let daytimeTemp: String
+    let eveningTemp: String
     let nighttimeTemp: String
     let minimumTemp: String
     let maximumTemp: String
+    
+    let morningFeelsLike: String
+    let daytimeFeelsLike: String
+    let eveningFeelsLike: String
+    let nightimeFeelsLike: String
+    
     let humidity: String
     let windspeed: String
     let windDegrees: String
@@ -75,4 +87,13 @@ struct DailyWeatherModel: Identifiable {
     let uvIndex: String
     let icons: String
     let iconColors: [Color]
+}
+
+struct SavedLocationWeather {
+    let name: String
+    let date: String
+    let temp: String
+    let icon: String
+    
+    static let shared = SavedLocationWeather(name: "Konoha", date: "2005", temp: "100", icon: "sun.min")
 }

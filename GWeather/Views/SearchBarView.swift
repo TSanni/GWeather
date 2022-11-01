@@ -18,57 +18,56 @@ struct SearchBarView: View {
     
     var body: some View {
         ZStack(alignment: .trailing) {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 25)
-                    .rotationEffect(Angle(degrees: degreeRotation))
-                    .animation(.default, value: degreeRotation)
-                
-                Text(viewModel.userLocation)
-                
-                Spacer()
-                
-            }
-            .padding()
-//            .background(.gray)
-            .onTapGesture {
+            
+            
+            //Button with icon and location name
+            Button {
                 withAnimation {
                     degreeRotation += 360
-//                    viewModel.changeToPlacesView = true
                     changeToPlacesView = true
-                    
                 }
-            }
-            
-            Button {
-                settingsScreen = true
             } label: {
-                
-                ZStack {
-                    Color.gray
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
-                    
-                    Image(systemName: "gear")
+                HStack {
+                    Image(systemName: "magnifyingglass")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                }.padding(.trailing)
-                
-//                Circle()
-//                    .frame(width: 40, height: 40)
-//                    .overlay {
-//                        Text("T")
-//                            .foregroundColor(.red)
-//                    }
-//                    .padding(.trailing)
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(.black)
+                        .rotationEffect(Angle(degrees: degreeRotation))
+                        .animation(.default, value: degreeRotation)
+                    
+                    Text(viewModel.userLocation)
+                        .foregroundColor(.black)
+                    
+                    Spacer()
+                    
+                }
+                .padding()
             }
 
             
 
+            //Button to show settings
+            SettingsScreen()
+//            Button {
+//                settingsScreen = true
+//            } label: {
+//
+//                ZStack {
+//                    LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
+//                        .frame(width: 40, height: 40)
+//                        .clipShape(Circle())
+//
+//                    Image(systemName: "gear")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 30, height: 30)
+//                        .foregroundColor(.white)
+//                }.padding(.trailing)
+//            }
+            
+            
+            
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 15))

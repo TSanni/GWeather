@@ -10,17 +10,18 @@ import SwiftUI
 struct TomorrowView: View {
     let purpleGradient = LinearGradient(colors: [.purple, .indigo], startPoint: .top, endPoint: .bottom)
     @EnvironmentObject var weather: WeatherViewModel
+    let tomorrow: TomorrowWeatherModel
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(weather.tomorrowWeather.date)
+            Text(tomorrow.date)
                 .font(.title2)
                 .foregroundColor(Color.black)
                 .shadow(color: Color.white ,radius: 1)
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Day \(weather.tomorrowWeather.highTemp)°↑ · Night \(weather.tomorrowWeather.lowTemp)°↓")
-                    Text(weather.tomorrowWeather.weatherDescription.capitalized)
+                    Text("Day \(tomorrow.highTemp)°↑ · Night \(tomorrow.lowTemp)°↓")
+                    Text(tomorrow.weatherDescription.capitalized)
                         .font(.title)
                 }
                 Spacer()
@@ -28,7 +29,7 @@ struct TomorrowView: View {
                 Image(systemName: weather.dailyWeather[1].icons)
                     .resizable()
                     .scaledToFit()
-                    .foregroundStyle(weather.tomorrowWeather.iconColor[0], weather.tomorrowWeather.iconColor[1], weather.tomorrowWeather.iconColor[2])
+                    .foregroundStyle(tomorrow.iconColor[0], tomorrow.iconColor[1], tomorrow.iconColor[2])
                     .frame(width: 75, height: 75)
                     .padding(.trailing)
             }
@@ -36,23 +37,27 @@ struct TomorrowView: View {
             Spacer()
             
 //            HourlyTempsView()
+            TomorrowDetailsView(tomorrow: weather.dailyWeather[1])
+                .scrollContentBackground(.hidden)
+
             
             HStack {
-                Text(weather.tomorrowWeather.chanceOfPrecipitation + "% chance of precipitation tomorrow")
+                Text(tomorrow.chanceOfPrecipitation + "% chance of precipitation tomorrow")
             }
             .padding()
             .shadow(color: Color.black, radius: 10)
 
             
+            
         }
         .padding()
-        .background(purpleGradient)
+        .background(K.Gradients.blueGradient)
     }
 }
 
 struct TomorrowView_Previews: PreviewProvider {
     static var previews: some View {
-        TomorrowView()
+        TomorrowView(tomorrow: TomorrowWeatherModel.shared)
             .environmentObject(WeatherViewModel.shared)
     }
 }

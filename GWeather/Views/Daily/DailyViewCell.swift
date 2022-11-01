@@ -19,7 +19,7 @@ struct DailyViewCell: View {
         
         VStack {
             
-            showDetailsButton(showDetails: $showDetails, daily: daily, dateIsToday: dateIsToday)
+            ShowDetailsButton(showDetails: $showDetails, daily: daily, dateIsToday: dateIsToday)
 
             if showDetails {
                 
@@ -34,7 +34,8 @@ struct DailyViewCell: View {
                     Spacer()
                     
                     VStack(alignment: .leading, spacing: 5) {
-                        Text(daily.windspeed + " mph")
+//                        Text(daily.windspeed + " mph")
+                        Text(daily.windspeed + (weather.units == "imperial" ? " mph" : " m/s")  )
                         Text(daily.humidity + "%")
                         Text(daily.uvIndex)
                         Text("\(daily.sunrise), \(daily.sunset)")
@@ -86,7 +87,7 @@ struct DailyViewCell_Previews: PreviewProvider {
     }
 }
 
-struct showDetailsButton: View {
+struct ShowDetailsButton: View {
     @Binding var showDetails: Bool
     let daily: DailyWeatherModel
     let dateIsToday: Bool

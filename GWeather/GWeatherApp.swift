@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct GWeatherApp: App {
+    @StateObject private var dataController = PersistenceController()
+
     var body: some Scene {
         WindowGroup {
-            ContentView().preferredColorScheme(.dark)
+            ContentView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+//                .preferredColorScheme(.dark)
         }
     }
 }
