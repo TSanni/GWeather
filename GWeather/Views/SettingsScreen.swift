@@ -8,60 +8,38 @@
 import SwiftUI
 
 struct SettingsScreen: View {
-    @State private var temperatureUnits = "imperial"
-    @EnvironmentObject var viewModel: WeatherViewModel
     @Environment(\.dismiss) private var dismiss
     @AppStorage("highlight") var highlightedID = 1
-
+    @State private var showSheet = false
     
     var body: some View {
         
         
-        Menu {
-            Section {
-                UnitButton(id: 1, unitName: "Fahrenheit", highlightedID: $highlightedID)
-                UnitButton(id: 2, unitName: "Celsius", highlightedID: $highlightedID)
-            }
-
+        Button {
             
-
+            showSheet.toggle()
+            
         } label: {
-//            Text("Settings")
             ZStack {
-                LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
+                
+                K.Colors.goodBlack
+                
+//                LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
                     .frame(width: 40, height: 40)
                     .clipShape(Circle())
-
+                
                 Image(systemName: "gear")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30, height: 30)
                     .foregroundColor(.white)
-            }.padding(.trailing)
+            }
+            .padding(.trailing)
         }
-
-        
-        
-        
-//        VStack {
-//            Text("GWeather")
-//                .font(.largeTitle)
-//                .padding()
-//            List {
-//                Section("Units") {
-//                    UnitButton(id: 1, unitName: "Fahrenheit", highlightedID: $highlightedID)
-//                    UnitButton(id: 2, unitName: "Celsius", highlightedID: $highlightedID)
-//
-//                }
-//
-//                Section("Contact") {
-//                    SendMailView ()
-//                }
-//            }
-//
-//
-//        }.preferredColorScheme(.light)
-
+        .sheet(isPresented: $showSheet) {
+            SettingsView()
+                .presentationDetents([.fraction(0.3), .medium])
+        }
     }
 }
 
@@ -72,36 +50,4 @@ struct SettingsScreen_Previews: PreviewProvider {
     }
 }
 
-struct UnitButton: View {
-    var id: Int
-    var unitName: String
-    @Binding var highlightedID: Int
-    @EnvironmentObject var viewModel: WeatherViewModel
-    @Environment(\.dismiss) var dismiss
 
-    var body: some View {
-        Button {
-            
-            DispatchQueue.main.async {
-                if id == 1 {
-                    viewModel.manager.startUpdatingLocation()
-                    viewModel.units = "imperial"
-                } else if id == 2 {
-                    viewModel.manager.startUpdatingLocation()
-                    viewModel.units = "metric"
-                }
-            }
-
-            
-            highlightedID = id
-//            dismiss()
-
-        } label: {
-            HStack {
-                Text(unitName)
-                Spacer()
-                Image(systemName: id == highlightedID ? "checkmark.circle.fill" : "checkmark.circle")
-            }
-        }
-    }
-}

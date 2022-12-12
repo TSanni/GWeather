@@ -45,14 +45,20 @@ struct K {
         static let sunset = "sunset.fill"
     }
     struct Colors {
+        
+        
+        
+        
         static let offWhite = Color(hue: 0.104, saturation: 0.0, brightness: 0.897)
         static let moonColor = Color(hue: 0.556, saturation: 0.128, brightness: 0.864)
         static let silver = Color.red
-        
+        static let goodBlack = Color(red: 0.15, green: 0.15, blue: 0.15)
+        static let darkBlue = Color(hue: 0.674, saturation: 0.986, brightness: 0.368)
+        static let cloudyBlue = Color(red: 0.519, green: 0.644, blue: 0.785)
+
+        static let thunderstormPurple = Color(red: 0.87, green: 0.24, blue: 0.595)
     }
     
-    static let darkBlue = Color(hue: 0.674, saturation: 0.986, brightness: 0.368)
-    static let cloudyBlue = Color(red: 0.519, green: 0.644, blue: 0.785)
     
     struct Gradients {
         static let purpleGradient = LinearGradient(colors: [.purple, .purple, .purple, .blue], startPoint: .top, endPoint: .bottom)

@@ -22,8 +22,7 @@ struct SendMailView: View {
              showMailView.toggle()
          }) {
              Text("Contact Support")
-//                 .foregroundColor(Color(hue: 0.456, saturation: 0.97, brightness: 0.79))
-
+                 .foregroundColor(.white)
          }
          .disabled(!MailView.canSendMail)
          .sheet(isPresented: $showMailView) {
@@ -36,6 +35,10 @@ struct SendMailView: View {
 
 struct SendMailView_Previews: PreviewProvider {
     static var previews: some View {
-        SendMailView()
+        ZStack {
+            K.Colors.goodBlack.ignoresSafeArea()
+            SendMailView()
+        }
+            
     }
 }

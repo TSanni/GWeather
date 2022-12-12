@@ -11,6 +11,18 @@ enum TimeRange: String, CaseIterable {
     case today = "Today"
     case tomorrow = "Tomorrow"
     case tenDays = "8 Days"
+    
+    
+//    var backGround: Color {
+//        switch self {
+//        case .today:
+//            <#code#>
+//        case .tomorrow:
+//            <#code#>
+//        case .tenDays:
+//            <#code#>
+//        }
+//    }
 }
 
 
@@ -21,7 +33,6 @@ struct TimeRangeView: View {
     @Binding var selectedTab: TimeRange // to get underline when swiping screen
     @Namespace private var animation
     @EnvironmentObject var weather: WeatherViewModel
-    @State var changeSearchBarColor: Color = .brown
     
     var body: some View {
         HStack {

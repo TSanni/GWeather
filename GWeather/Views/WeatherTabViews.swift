@@ -16,7 +16,7 @@ struct WeatherTabViews: View {
             
             TimeRangeView(selectedTab: $selectedTab)
                 .padding(.horizontal)
-                .background(weather.searchBarColor)
+                .background(weather.enumBackgroud.getSearchBarColor)
                 
             Divider()
 
@@ -43,14 +43,6 @@ struct WeatherTabViews: View {
     
     
     
-//    var barAndTimeRangeView: some View {
-//        VStack {
-//            SearchBarView()
-//            //                .clipShape(RoundedRectangle(cornerRadius: 15))
-//            TimeRangeView(selectedTab: $selectedTab).padding(.horizontal)
-//        }
-//        .padding(.horizontal)
-//    }
 }
 
 struct WeatherTabViews_Previews: PreviewProvider {

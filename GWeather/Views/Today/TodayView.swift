@@ -14,79 +14,106 @@ struct TodayView: View {
     let dailyWeather: DailyWeatherModel //will pass in first item in this array
     
     var body: some View {
-        VStack(alignment: .leading) {
+        GeometryReader { geo in
+            VStack(alignment: .leading) {
+                
+                Text(currentWeather.currentTime)
+                    .foregroundColor(Color.black)
+                    .padding(.bottom, 5)
+//                    .shadow(color: Color.white ,radius: 1)
+                
+                Text("Day \(dailyWeather.maximumTemp)°↑ · Night \(dailyWeather.minimumTemp)°↓")
+                    .shadow(color: Color.black, radius: 2)
+                
+                
+                
+                VStack {
+                    HStack {
+                        Text("\(currentWeather.currentTemp)\(weather.unitLogo)")
+                            .font(.system(size: 75, weight: .bold, design: .rounded))
+                            .shadow(color: Color.black, radius: 4)
+                        
+                        Spacer()
+                        Image(systemName: currentWeather.icon)
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(currentWeather.iconColor[0], currentWeather.iconColor[1], currentWeather.iconColor[2])
+                            .shadow(color: Color.black, radius: 4)
 
-            Text(currentWeather.currentTime)
-//            Text("August 45, 2:90")
-                .font(.title2)
-                .foregroundColor(Color.black)
-                .padding(.bottom, 5)
-                .shadow(color: Color.white ,radius: 1)
-            
-            Text("Day \(dailyWeather.maximumTemp)°↑ · Night \(dailyWeather.minimumTemp)°↓")
-                .font(.title3)
-                .shadow(color: Color.black, radius: 1)
+                            .frame(width: 100, height: 100)
+                    }
+                    .padding(.trailing)
+                    
+                    HStack {
+                        Text("Feels like \(currentWeather.feelsLike)°")
 
-            
-            
-            VStack {
-                HStack {
-                    Text("\(currentWeather.currentTemp)\(weather.unitLogo)")
-                        .font(.system(size: 75))
-                        .shadow(color: Color.black, radius: 1)
-
-                    Spacer()
-                    Image(systemName: currentWeather.icon)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundStyle(currentWeather.iconColor[0], currentWeather.iconColor[1], currentWeather.iconColor[2])
-                        .frame(width: 100, height: 100)
+                        Spacer()
+                        Text(currentWeather.description.capitalized)
+    
+                    }
+                    .shadow(color: Color.black, radius: 1)
+                    .shadow(color: Color.black, radius: 1)
+                    .padding(.trailing)
                 }
-                .padding(.trailing)
+     
+                Spacer()
+                
+                HourlyTempsView(hourly: weather.hourlyWeather)
+                    .shadow(radius: 5)
+                
+//                HourlyBarGraphView(hourly: weather.hourlyWeather)
                 
                 HStack {
-                    Text("Feels like \(currentWeather.feelsLike)°")
+                    Image(systemName: "umbrella.fill")
+                    Text(dailyWeather.chanceOfPrecipitation + "% chance of precipitation today")
                     Spacer()
-                    Text(currentWeather.description.capitalized)
-                    
                 }
-                .shadow(color: Color.black, radius: 1)
-                .shadow(color: Color.black, radius: 1)
-                .padding(.trailing)
-            }
-            
+                .padding()
+                .shadow(color: Color.black, radius: 10)
 
-
-            
-            Spacer()
-            
-            HourlyTempsView(hourly: weather.hourlyWeather)
-            
-            HStack {
-                Image(systemName: "umbrella.fill")
-                Text(dailyWeather.chanceOfPrecipitation + "% chance of precipitation today")
-                Spacer()
             }
             .padding()
-            .shadow(color: Color.black, radius: 10)
-            
-            
-
-            
+            .background(weather.enumBackgroud.getBackgroundColor)
         }
-        .padding()
-        .background(weather.backgroundColor)
-
+        
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayView(currentWeather: CurrentWeatherModel.shared, dailyWeather: DailyWeatherModel.shared)
+        
+        
+        let today: CurrentWeatherModel = CurrentWeatherModel(currentTime: "12:00 PM",
+                                                sunrise: "5:25 AM",
+                                                sunset: "5:27 PM",
+                                                currentTemp: "100",
+                                                feelsLike: "105",
+                                                description: "Sunny",
+                                                icon: "sun.min",
+                                                iconColor: [.yellow, .yellow, .yellow]
+        )
+        
+        
+        
+        let daily: DailyWeatherModel = DailyWeatherModel(dates: "-", sunrise: "-", sunset: "-", morningTemp: "-", daytimeTemp: "-", eveningTemp: "-", nighttimeTemp: "-", minimumTemp: "-", maximumTemp: "-", morningFeelsLike: "-", daytimeFeelsLike: "-", eveningFeelsLike: "-", nightimeFeelsLike: "-", humidity: "-", windspeed: "-", windDegrees: "-", description: "-", chanceOfPrecipitation: "-", uvIndex: "-", icons: "sun.min", iconColors: [.clear, .clear, .clear])
+        
+        
+        TodayView(currentWeather: today, dailyWeather: daily)
             .preferredColorScheme(.dark)
             .environmentObject(WeatherViewModel.shared)
         
-        TodayView(currentWeather: CurrentWeatherModel.shared, dailyWeather: DailyWeatherModel.shared)
+        TodayView(currentWeather: today, dailyWeather: daily)
             .previewDevice("iPhone SE (3rd generation)")
             .preferredColorScheme(.dark)
             .environmentObject(WeatherViewModel.shared)

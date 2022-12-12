@@ -20,22 +20,38 @@ struct ContentView: View {
     @State private var changeToPlacesView = false
     var body: some View {
         
-        VStack(spacing: 0) {
-            if !changeToPlacesView {
-                VStack(spacing: 0) {
+        ZStack {
+              
+            VStack(spacing: 0) {
                     
-                    SearchBarView(changeToPlacesView: $changeToPlacesView)
-                        .foregroundColor(.black)
-                        .padding([.horizontal, .bottom])
-                        .background(viewModel.searchBarColor)
-                    
-                    WeatherTabViews()
-                        .ignoresSafeArea()
+                if !changeToPlacesView {
+                    VStack(spacing: 0) {
+                        
+                        SearchBarView(changeToPlacesView: $changeToPlacesView)
+                            .padding([.horizontal, .bottom])
+                            .background(viewModel.enumBackgroud.getSearchBarColor)
+
+                            .shadow(radius: 5)
+                        
+                        WeatherTabViews()
+                            .ignoresSafeArea()
+                    }
+                    .transition(AnyTransition.opacity)
+                    .animation(.easeOut, value: changeToPlacesView)
+
+                } else {
+                    PlacesView(changeToPlacesView: $changeToPlacesView)
+                        .transition(AnyTransition.scale)
+                        .animation(.easeOut, value: changeToPlacesView)
                 }
-            } else {
-                PlacesView(changeToPlacesView: $changeToPlacesView)
+            }
+            
+            if viewModel.activateLoadingView {
+                ProgressView()
             }
         }
+        .font(.system(.body, design: .rounded))
+        .bold()
         .preferredColorScheme(changeToPlacesView ? .light : .dark)
         .environmentObject(viewModel)
         .onChange(of: scenePhase) { newValue in
@@ -70,6 +86,7 @@ struct ContentView: View {
         .onChange(of: viewModel.errorAlertForSearch) { newValue in
             unknownPlace = true
         }
+
         
 
     }
@@ -78,18 +95,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        ZStack {
-        
-//        Color.orange.ignoresSafeArea()
         ContentView()
-//            .preferredColorScheme(.light)
             .previewDevice("iPhone 13 Pro Max")
-//        }
-        
-        ContentView()
-//            .preferredColorScheme(.dark)
-            .previewDevice("iPod touch (7th generation)")
-        
     }
 }
 

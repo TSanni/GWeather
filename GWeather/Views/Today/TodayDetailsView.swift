@@ -5,6 +5,8 @@
 //  Created by Tomas Sanni on 8/31/22.
 //
 
+//NOT USED IN PROJECT
+
 import SwiftUI
 
 struct TodayDetailsView: View {

@@ -42,16 +42,17 @@ struct TomorrowView: View {
 
             
             HStack {
+                Image(systemName: "umbrella.fill")
                 Text(tomorrow.chanceOfPrecipitation + "% chance of precipitation tomorrow")
+                    .font(.headline)
+
             }
             .padding()
             .shadow(color: Color.black, radius: 10)
-
-            
-            
+    
         }
         .padding()
-        .background(K.Gradients.blueGradient)
+        .background(K.Colors.cloudyBlue)
     }
 }
 

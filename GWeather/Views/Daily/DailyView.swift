@@ -26,9 +26,6 @@ struct DailyView: View {
                 
                 Spacer()
                 
-                SendMailView()
-                    .foregroundColor(.gray)
-                    .padding()
             }
         }
         .background(.white)

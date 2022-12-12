@@ -34,7 +34,7 @@ struct SearchBarView: View {
                         .frame(width: 25, height: 25)
                         .foregroundColor(.black)
                         .rotationEffect(Angle(degrees: degreeRotation))
-                        .animation(.default, value: degreeRotation)
+//                        .animation(.default, value: degreeRotation)
                     
                     Text(viewModel.userLocation)
                         .foregroundColor(.black)
@@ -49,39 +49,21 @@ struct SearchBarView: View {
 
             //Button to show settings
             SettingsScreen()
-//            Button {
-//                settingsScreen = true
-//            } label: {
-//
-//                ZStack {
-//                    LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
-//                        .frame(width: 40, height: 40)
-//                        .clipShape(Circle())
-//
-//                    Image(systemName: "gear")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 30, height: 30)
-//                        .foregroundColor(.white)
-//                }.padding(.trailing)
-//            }
-            
             
             
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 15))
-        .sheet(isPresented: $settingsScreen) {
-            SettingsScreen()
-        }
-
     }
 }
 
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarView(changeToPlacesView: .constant(false)).background(.orange)
-            .environmentObject(WeatherViewModel.shared)
+        ZStack {
+            Color(red: 0.15, green: 0.15, blue: 0.15)
+            SearchBarView(changeToPlacesView: .constant(false)).background(.orange)
+                .environmentObject(WeatherViewModel.shared)
+        }
             
     }
 }
