@@ -24,7 +24,12 @@ struct SearchBarView: View {
             Button {
                 withAnimation {
                     degreeRotation += 360
+                }
+                
+                //damping = bounciness? | blendDuration = elements within bouciness?
+                withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.55, blendDuration: 1)) {
                     changeToPlacesView = true
+
                 }
             } label: {
                 HStack {

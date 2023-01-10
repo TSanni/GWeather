@@ -11,7 +11,11 @@ struct HourlyTempsView: View {
     @EnvironmentObject var weather: WeatherViewModel
     let hourly: [HourlyWeatherModel]
     
+    
     var body: some View {
+        let rectangle = RoundedRectangle(cornerRadius: 10).fill(Color.white.opacity(0.1))
+
+        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(0..<hourly.count, id: \.self) { index in
@@ -43,13 +47,17 @@ struct HourlyTempsView: View {
                             
                     }
                     .padding(.horizontal, 5)
+                    .padding(.vertical, 5)
+                    .background {
+                        hourly[index].time == "12 AM" || hourly[index].time == "12 PM" ? rectangle : nil
+                    }
                 }
             }
         }
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .fill(.black.opacity(0.2))
+                .fill(.black.opacity(0.1))
         }
     }
 }

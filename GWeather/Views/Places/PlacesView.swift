@@ -16,17 +16,6 @@ struct PlacesView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.timeAdded, order: .reverse)], animation: .easeInOut) var places: FetchedResults<Place>
     
     
-//    init(changeToPlacesView: Binding<Bool>) {
-//        _changeToPlacesView = changeToPlacesView
-//        
-//        UITableView.appearance().backgroundColor = .red
-//        UITableViewCell.appearance().backgroundColor = .red
-//        UITableView.appearance().tableFooterView = UIView()
-//    }
-    
-
-    
-    
     var body: some View {
         VStack {
             HStack {
@@ -47,15 +36,6 @@ struct PlacesView: View {
 
             }
             .disabled(weather.userLocation == "Earth" ? true : false)
-
-            
-//
-//            currentLocationInfo
-//                .contextMenu {
-//                    Button("Save location") {
-//                        addLocation()
-//                    }
-//                }
             .padding(.bottom)
             
             HStack {
@@ -87,7 +67,7 @@ struct PlacesView: View {
             }
             .scrollContentBackground(.hidden)
         }
-        .padding(.horizontal)
+        .padding([.horizontal, .bottom])
         .background(.white)
         
     }
@@ -218,7 +198,8 @@ struct PlacesView: View {
 
 struct PlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesView(changeToPlacesView: .constant(false)).environmentObject(WeatherViewModel.shared)
+        PlacesView(changeToPlacesView: .constant(false))
+            .environmentObject(WeatherViewModel.shared)
     }
 }
 

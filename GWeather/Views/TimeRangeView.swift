@@ -13,16 +13,6 @@ enum TimeRange: String, CaseIterable {
     case tenDays = "8 Days"
     
     
-//    var backGround: Color {
-//        switch self {
-//        case .today:
-//            <#code#>
-//        case .tomorrow:
-//            <#code#>
-//        case .tenDays:
-//            <#code#>
-//        }
-//    }
 }
 
 
@@ -40,16 +30,9 @@ struct TimeRangeView: View {
                 Button {
                     // change Weather range
                     withAnimation {
-//                        selectedRange = range
+
                         selectedTab = range
-//                        switch selectedTab {
-//                        case .today:
-//                            weather.searchBarColor = .red
-//                        case .tomorrow:
-//                            weather.searchBarColor = .yellow
-//                        case .tenDays:
-//                            weather.searchBarColor = .green
-//                        }
+
                     }
                 } label: {
                     VStack {

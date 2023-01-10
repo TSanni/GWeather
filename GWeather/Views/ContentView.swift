@@ -29,20 +29,20 @@ struct ContentView: View {
                         
                         SearchBarView(changeToPlacesView: $changeToPlacesView)
                             .padding([.horizontal, .bottom])
-                            .background(viewModel.enumBackgroud.getSearchBarColor)
+                            .background(viewModel.todayEnumBackground.getSearchBarColor)
 
                             .shadow(radius: 5)
                         
                         WeatherTabViews()
                             .ignoresSafeArea()
                     }
-                    .transition(AnyTransition.opacity)
-                    .animation(.easeOut, value: changeToPlacesView)
+//                    .transition(AnyTransition.scale)
+//                    .animation(.easeOut, value: changeToPlacesView)
 
                 } else {
                     PlacesView(changeToPlacesView: $changeToPlacesView)
-                        .transition(AnyTransition.scale)
-                        .animation(.easeOut, value: changeToPlacesView)
+                        .transition(AnyTransition.move(edge: .top))
+//                        .animation(.easeOut(duration: 2), value: changeToPlacesView)
                 }
             }
             
@@ -96,7 +96,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewDevice("iPhone 13 Pro Max")
+            .previewDevice("iPhone 11 Pro Max")
     }
 }
 

@@ -19,7 +19,7 @@ struct K {
     static let goodSearchBarBackground = Color(red: 56/255, green: 103/255, blue: 214/255, opacity: 1.0)
 
     struct WeatherConstants {
-        static let dailyHours = 12
+        static let dailyHours = 24
     }
     
     struct WeatherCondition {
@@ -57,6 +57,8 @@ struct K {
         static let cloudyBlue = Color(red: 0.519, green: 0.644, blue: 0.785)
 
         static let thunderstormPurple = Color(red: 0.87, green: 0.24, blue: 0.595)
+        
+        static let precipitationBlue = Color(hue: 0.521, saturation: 0.946, brightness: 0.871)
     }
     
     

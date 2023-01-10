@@ -44,7 +44,7 @@ enum ChangeBackground {
         case .daytimeFog:
             return Color.DayRain.dayRain
         case .nighttimeFog:
-            return Color.NightRain.nightRain4
+            return Color.NightRain.nightRain1
         }
     }
     
@@ -70,7 +70,7 @@ enum ChangeBackground {
         case .daytimeFog:
             return Color.DayRain.dayRain
         case .nighttimeFog:
-            return Color.NightRain.nightRain2
+            return Color.NightRain.nightRain3
         }
     }
     

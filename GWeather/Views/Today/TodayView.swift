@@ -15,65 +15,67 @@ struct TodayView: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack(alignment: .leading) {
-                
-                Text(currentWeather.currentTime)
-                    .foregroundColor(Color.black)
-                    .padding(.bottom, 5)
-//                    .shadow(color: Color.white ,radius: 1)
-                
-                Text("Day \(dailyWeather.maximumTemp)°↑ · Night \(dailyWeather.minimumTemp)°↓")
-                    .shadow(color: Color.black, radius: 2)
-                
-                
-                
-                VStack {
-                    HStack {
-                        Text("\(currentWeather.currentTemp)\(weather.unitLogo)")
-                            .font(.system(size: 75, weight: .bold, design: .rounded))
-                            .shadow(color: Color.black, radius: 4)
-                        
-                        Spacer()
-                        Image(systemName: currentWeather.icon)
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(currentWeather.iconColor[0], currentWeather.iconColor[1], currentWeather.iconColor[2])
-                            .shadow(color: Color.black, radius: 4)
+            
+                VStack(alignment: .leading) {
+                    
+                    Text(currentWeather.currentTime)
+                        .foregroundColor(Color.black)
+                        .padding(.bottom, 5)
+    //                    .shadow(color: Color.white ,radius: 1)
+                    
+                    Text("Day \(dailyWeather.maximumTemp)°↑ · Night \(dailyWeather.minimumTemp)°↓")
+                        .shadow(color: Color.black, radius: 2)
+                    
+                    
+                    
+                    VStack {
+                        HStack {
+                            Text("\(currentWeather.currentTemp)\(weather.unitLogo)")
+                                .font(.system(size: 75, weight: .bold, design: .rounded))
+                                .shadow(color: Color.black, radius: 4)
+                            
+                            Spacer()
+                            Image(systemName: currentWeather.icon)
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(currentWeather.iconColor[0], currentWeather.iconColor[1], currentWeather.iconColor[2])
+                                .shadow(color: Color.black, radius: 4)
 
-                            .frame(width: 100, height: 100)
+                                .frame(width: 100, height: 100)
+                        }
+                        .padding(.trailing)
+                        
+                        HStack {
+                            Text("Feels like \(currentWeather.feelsLike)°")
+
+                            Spacer()
+                            Text(currentWeather.description.capitalized)
+        
+                        }
+                        .shadow(color: Color.black, radius: 1)
+                        .shadow(color: Color.black, radius: 1)
+                        .padding(.trailing)
                     }
-                    .padding(.trailing)
+         
+                    Spacer()
+                    
+                    HourlyTempsView(hourly: weather.hourlyWeather)
+                        .shadow(radius: 5)
+//                    Spacer()
+//                    HourlyBarGraphView(hourly: weather.hourlyWeather)
                     
                     HStack {
-                        Text("Feels like \(currentWeather.feelsLike)°")
-
+                        Image(systemName: "umbrella.fill")
+                        Text(dailyWeather.chanceOfPrecipitation + "% chance of precipitation today")
                         Spacer()
-                        Text(currentWeather.description.capitalized)
-    
                     }
-                    .shadow(color: Color.black, radius: 1)
-                    .shadow(color: Color.black, radius: 1)
-                    .padding(.trailing)
-                }
-     
-                Spacer()
-                
-                HourlyTempsView(hourly: weather.hourlyWeather)
-                    .shadow(radius: 5)
-                
-//                HourlyBarGraphView(hourly: weather.hourlyWeather)
-                
-                HStack {
-                    Image(systemName: "umbrella.fill")
-                    Text(dailyWeather.chanceOfPrecipitation + "% chance of precipitation today")
-                    Spacer()
+                    .padding()
+                    .shadow(color: Color.black, radius: 10)
+                    
                 }
                 .padding()
-                .shadow(color: Color.black, radius: 10)
-
-            }
-            .padding()
-            .background(weather.enumBackgroud.getBackgroundColor)
+                .background(weather.todayEnumBackground.getBackgroundColor)
+            
         }
         
     }
@@ -110,6 +112,7 @@ struct TodayView_Previews: PreviewProvider {
         
         
         TodayView(currentWeather: today, dailyWeather: daily)
+            .previewDevice("iPhone 11 Pro Max")
             .preferredColorScheme(.dark)
             .environmentObject(WeatherViewModel.shared)
         

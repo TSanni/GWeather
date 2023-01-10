@@ -16,7 +16,7 @@ struct WeatherTabViews: View {
             
             TimeRangeView(selectedTab: $selectedTab)
                 .padding(.horizontal)
-                .background(weather.enumBackgroud.getSearchBarColor)
+                .background(weather.todayEnumBackground.getSearchBarColor)
                 
             Divider()
 

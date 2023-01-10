@@ -16,15 +16,11 @@ struct SettingsScreen: View {
         
         
         Button {
-            
             showSheet.toggle()
-            
         } label: {
             ZStack {
                 
                 K.Colors.goodBlack
-                
-//                LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
                     .frame(width: 40, height: 40)
                     .clipShape(Circle())
                 

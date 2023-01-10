@@ -15,7 +15,8 @@ import SwiftUI
 //MARK: - WeatherViewModel
 class WeatherViewModel: NSObject, ObservableObject {
     
-    @Published var enumBackgroud: ChangeBackground = .daytimeClear
+    @Published var todayEnumBackground: ChangeBackground = .daytimeClear
+    @Published var tomorrowEnumBackground: ChangeBackground = .daytimeClear //MARK: - Make this property useful
     
     @Published var currentWeather: CurrentWeatherModel = CurrentWeatherModel.shared
     @Published var tomorrowWeather: TomorrowWeatherModel = TomorrowWeatherModel.shared
@@ -150,7 +151,6 @@ extension WeatherViewModel {
             self.activateLoadingView = true
         }
         
-        print("get with coordinates")
         guard let apiKey = apiKey else { fatalError("Could not get apiKey") }
         
         let urlString = "\(oneCallUrl)lat=\(latitude)&lon=\(longitude)&exclude=minutely&units=\(units)&appid=\(apiKey)"
@@ -173,8 +173,6 @@ extension WeatherViewModel {
             let task = session.dataTask(with: url) { data, response, error in
                 if let error = error {
                     print("Could not start session: \(error)")
-                    
-                    
                     
                     DispatchQueue.main.async {
                         self.activateLoadingView = true
@@ -325,7 +323,6 @@ extension WeatherViewModel {
         }
     }
     
-    
     func appendHourlyWeatherInformation(weatherData: WeatherData) {
         
         DispatchQueue.main.async {
@@ -353,8 +350,9 @@ extension WeatherViewModel {
             var timedAnimation = 0.0
             for i in 0..<K.WeatherConstants.dailyHours {
                 
-                
-                withAnimation(.easeIn(duration: timedAnimation)) {
+//                .easeIn(duration: timedAnimation)
+
+                withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.5, blendDuration: 1)) {
                     
                     self.hourlyWeather.append(HourlyWeatherModel(temp: String(format: K.noDecimals, hourlyTemp[i]),
                                                                  time: times[i],
@@ -371,7 +369,6 @@ extension WeatherViewModel {
         }
         
     }
-    
     
     func appendDailyWeatherInformation(weatherData: WeatherData) {
         
@@ -474,15 +471,12 @@ extension WeatherViewModel {
         }
     }
     
-    
     func appendTomorrowWeatherInformation(weatherData: WeatherData) {
         
         DispatchQueue.main.async {
             self.tomorrowWeather = TomorrowWeatherModel(date: self.dailyWeather[1].dates, highTemp: self.dailyWeather[1].maximumTemp, lowTemp: self.dailyWeather[1].minimumTemp, weatherDescription: self.dailyWeather[1].description, icon: self.dailyWeather[1].icons, iconColor: self.dailyWeather[1].iconColors, chanceOfPrecipitation: self.dailyWeather[1].chanceOfPrecipitation)
         }
     }
-    
-    
     
     func getDate(timezoneOffset: Int) -> String {
         let date = Date.now
@@ -578,75 +572,75 @@ extension WeatherViewModel {
         
         switch apiIcon {
         case "01d":
-            if current { enumBackgroud = .daytimeClear }
+            if current { todayEnumBackground = .daytimeClear }
             return K.WeatherCondition.sunMaxFill
             
         case "01n":
-            if current { enumBackgroud = .nighttimeClear }
+            if current { todayEnumBackground = .nighttimeClear }
             return K.WeatherCondition.moonStarsFill
             
         case "02d":
-            if current { enumBackgroud = .daytimeClear }
+            if current { todayEnumBackground = .daytimeClear }
             return K.WeatherCondition.cloudSunFill
         
         case "02n":
-            if current { enumBackgroud = .nighttimeClear }
+            if current { todayEnumBackground = .nighttimeClear }
             return K.WeatherCondition.cloudMoonFill
         
         case "03d":
-            if current { enumBackgroud = .daytimeFog }
+            if current { todayEnumBackground = .daytimeFog }
             return K.WeatherCondition.cloudFill
         
         case "03n":
-            if current { enumBackgroud = .nighttimeFog }
+            if current { todayEnumBackground = .nighttimeFog }
             return K.WeatherCondition.cloudFill
         
         case "04d":
-            if current { enumBackgroud = .daytimeFog }
+            if current { todayEnumBackground = .daytimeFog }
             return K.WeatherCondition.cloudFill
         
         case "04n":
-            if current { enumBackgroud = .nighttimeFog }
+            if current { todayEnumBackground = .nighttimeFog }
             return K.WeatherCondition.cloudFill
         
         case "09d":
-            if current { enumBackgroud = .daytimeFog }
+            if current { todayEnumBackground = .daytimeFog }
             return K.WeatherCondition.cloudRainFill
         
         case "09n":
-            if current { enumBackgroud = .nighttimeFog }
+            if current { todayEnumBackground = .nighttimeFog }
             return K.WeatherCondition.cloudRainFill
         
         case "10d":
-            if current { enumBackgroud = .daytimeFog }
+            if current { todayEnumBackground = .daytimeFog }
             return K.WeatherCondition.cloudSunRainFill
         
         case "10n":
-            if current { enumBackgroud = .nighttimeFog }
+            if current { todayEnumBackground = .nighttimeFog }
             return K.WeatherCondition.cloudMoonRainFill
         
         case "11d":
-            if current { enumBackgroud = .thunderstorm }
+            if current { todayEnumBackground = .thunderstorm }
             return K.WeatherCondition.cloudBoltFill
         
         case "11n":
-            if current { enumBackgroud = .thunderstorm }
+            if current { todayEnumBackground = .thunderstorm }
             return K.WeatherCondition.cloudBoltFill
         
         case "13d":
-            if current { enumBackgroud = .daytimeSnow }
+            if current { todayEnumBackground = .daytimeSnow }
             return K.WeatherCondition.snowflake
         
         case "13n":
-            if current { enumBackgroud = .nighttimeSnow }
+            if current { todayEnumBackground = .nighttimeSnow }
             return K.WeatherCondition.snowflake
         
         case "50d":
-            if current { enumBackgroud = .daytimeFog }
+            if current { todayEnumBackground = .daytimeFog }
             return K.WeatherCondition.cloudFogFill
         
         case "50n":
-            if current { enumBackgroud = .nighttimeFog }
+            if current { todayEnumBackground = .nighttimeFog }
             return K.WeatherCondition.cloudFogFill
             
             
