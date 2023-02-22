@@ -13,13 +13,13 @@ There are a number of features I would like to add to bring it closer to Google'
 
 
 
-## Screenshots
+## DEMO
+
+![Simulator Screen Recording - iPhone 11 Pro Max - 2023-02-22 at 08 54 27](https://user-images.githubusercontent.com/50508424/220785885-9c63ee84-07d6-4787-af20-eedda66796f4.gif)
+
+
 
 [![Screenshot-2022-12-21-at-4-55-37-PM.png](https://i.postimg.cc/sDmpWx91/Screenshot-2022-12-21-at-4-55-37-PM.png)](https://postimg.cc/QHB9GXzr)
 
 
-[![Apple-i-Phone-11-Pro-Max-Screenshot-1.png](https://i.postimg.cc/MHKY3FCn/Apple-i-Phone-11-Pro-Max-Screenshot-1.png)](https://postimg.cc/ZB23CVKm)
 
-[![Apple-i-Phone-11-Pro-Max-Screenshot-6.png](https://i.postimg.cc/dVMyLf5G/Apple-i-Phone-11-Pro-Max-Screenshot-6.png)](https://postimg.cc/Whn3y5L4)
-
-[![Apple-i-Phone-11-Pro-Max-Screenshot-3.png](https://i.postimg.cc/s2j1WC7G/Apple-i-Phone-11-Pro-Max-Screenshot-3.png)](https://postimg.cc/XrPVMh2n)
