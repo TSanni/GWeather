@@ -37,6 +37,7 @@ struct WeatherTabViews: View {
                 
             }.tabViewStyle(.page(indexDisplayMode: .never))
         }
+        .animation(.default, value: selectedTab)
         
     }
     

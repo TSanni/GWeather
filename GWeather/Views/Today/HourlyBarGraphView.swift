@@ -20,7 +20,7 @@ struct TestGraphStruct: Identifiable {
 }
 
 
-
+//MARK: - Main
 struct HourlyBarGraphView: View {
     
     
@@ -92,6 +92,7 @@ struct HourlyBarGraphView: View {
     }
 }
 
+//MARK: - Preview
 struct HourlyBarGraphView_Previews: PreviewProvider {
     static var previews: some View {
         

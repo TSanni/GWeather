@@ -39,14 +39,21 @@ struct TimeRangeView: View {
                         // Today, Tomorrow, 10 Days
                         Text(range.rawValue)
                             .foregroundColor(Color.black)
-                        
-                        // Underline correct button
-                        if selectedTab == range { //only using selectedTab works here for some reason
+                        ZStack {
+                            
+                            // Underline correct button
+                            
+                            
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.white)
-                                .frame(width: 70, height: 5)
-                                .matchedGeometryEffect(id: "selected", in: animation)
-                        } 
+                                .fill(Color.clear)
+                                .frame( height: 5)
+                            if selectedTab == range { //only using selectedTab works here for some reason
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.white)
+                                    .frame(width: 70, height: 5)
+                                    .matchedGeometryEffect(id: "selected", in: animation)
+                            }
+                        }
                     }
                 }
                 if range != .tenDays { Spacer() }
@@ -59,7 +66,7 @@ struct TimeRangeView: View {
 struct TimeRangeView_Previews: PreviewProvider {
     static var previews: some View {
         TimeRangeView(selectedTab: .constant(.today))
-            .previewDevice("iPhone 13 Pro Max")
+            .previewDevice("iPhone 11 Pro Max")
             .background(.blue)
             .environmentObject(WeatherViewModel.shared)
     }

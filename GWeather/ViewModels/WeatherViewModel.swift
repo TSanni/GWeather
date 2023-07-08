@@ -35,7 +35,7 @@ class WeatherViewModel: NSObject, ObservableObject {
     @Published var errorAlertForMainScreen = false
     @Published var errorAlertForSearch = false
     @Published var activateLoadingView = false
-
+    
     
     
     var numOfTimesErrorIsCalled = 0
